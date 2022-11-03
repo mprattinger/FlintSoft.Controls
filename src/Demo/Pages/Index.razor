@@ -1,0 +1,43 @@
+﻿@page "/"
+@using Demo.Models
+@using static Lib.Buttons.FSButton
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<EditForm Model="_model" OnValidSubmit="myFirstSubmit" class="first-form">
+    <DataAnnotationsValidator />
+    <Lib.Container.FSFormRow>
+        <Lib.Inputs.FSInput Id="first-inp" Label="My first Input" @bind-Value="_model.FirstTextInput" ValidationFor="() => _model.FirstTextInput" />
+    </Lib.Container.FSFormRow>
+    <Lib.Container.FSFormRow>
+        <Lib.Inputs.FSDateInput Id="first-date" Label="My first Date" @bind-DateValue="_model.FirstDate" ValidationFor="() => _model.FirstDate" />
+    </Lib.Container.FSFormRow>
+    <Lib.Container.FSFormButtonRow>
+        <Lib.Buttons.FSButton ButtonType="submit" Caption="Speichern" Style="ButtonStyle.PRIMARY" />
+        <Lib.Buttons.FSButton ButtonType="button" Caption="Abbrechen" Style="ButtonStyle.SECONDARY" OnClickCallback="abort" />
+        
+    </Lib.Container.FSFormButtonRow>
+</EditForm>
+
+<textarea>@TextArea</textarea>
+
+@code {
+    public string TextArea { get; set; } = "";
+
+    public FirstInputs _model = new();
+
+    void myFirstSubmit()
+    {
+        TextArea = "";
+        TextArea = $"Text: {_model.FirstTextInput}, Date: {_model.FirstDate.ToShortDateString()}";
+    }
+
+    void abort() {
+        TextArea = "";
+    }
+
+} 

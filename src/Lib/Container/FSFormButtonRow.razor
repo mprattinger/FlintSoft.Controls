@@ -1,0 +1,16 @@
+﻿<div class="@componentCssClass">
+    @ChildContent
+</div>
+
+
+@code {
+    const string BASECLASS = "fs-form-btn-row-container";
+
+    [Parameter]
+    public string CssStyle { get; set; } = "";
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = default!;
+
+    private string componentCssClass { get { return $"{BASECLASS} {CssStyle}"; } }
+}

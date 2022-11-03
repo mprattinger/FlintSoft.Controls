@@ -1,0 +1,54 @@
+﻿<button type="@ButtonType" onclick="@OnClickCallback" @onclick:preventDefault="@PreventDefault" class="@componentCssClass">@Caption</button>
+
+@code {
+    public enum ButtonStyle
+    {
+        PRIMARY,
+        SECONDARY
+    }
+
+    const string BASECLASS = "fs-button";
+
+    [Parameter]
+    public string Caption { get; set; } = "Caption";
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClickCallback { get; set; }
+
+    [Parameter]
+    public string CssClass { get; set; } = "";
+
+    [Parameter]
+    public ButtonStyle Style { get; set; } = ButtonStyle.PRIMARY;
+
+    [Parameter]
+    public string ButtonType { get; set; } = "button";
+
+    private string componentCssClass
+    {
+        get
+        {
+            var typeClass = Style switch
+            {
+                ButtonStyle.PRIMARY => "fs-btn-primary",
+                ButtonStyle.SECONDARY => "fs-btn-secondary",
+                _ => ""
+            };
+
+            var ret = BASECLASS;
+            ret = $"{ret} {typeClass}";
+            ret = ret.Trim();
+            ret = $"{ret} {CssClass}";
+            ret = ret.Trim();
+            return ret;
+        }
+    }
+
+    private bool PreventDefault
+    {
+        get
+        {
+            return OnClickCallback.HasDelegate;
+        }
+    }
+}

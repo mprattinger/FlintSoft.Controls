@@ -1,0 +1,16 @@
+﻿<label class="@containerClass" htmlFor="@BecHtmlFor">@LabelText</label>
+
+@code {
+    const string BASECLASS = "fs-label";
+
+    [Parameter]
+    public string LabelText { get; set; } = "";
+
+    [Parameter]
+    public string CssClass { get; set; } = "";
+
+    [Parameter]
+    public string BecHtmlFor { get; set; } = "";
+
+    private string containerClass { get { return $"{BASECLASS} {CssClass}"; } }
+}

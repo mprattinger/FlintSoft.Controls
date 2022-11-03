@@ -1,0 +1,10 @@
+﻿.fs-form-btn-row-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  padding-right: 0px;
+}
+.fs-form-btn-row-container ::deep button {
+  margin-right: 5px;
+}

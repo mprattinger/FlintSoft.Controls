@@ -1,0 +1,54 @@
+﻿@using System.Linq.Expressions
+@inherits InputBase<TType>
+@typeparam TType
+
+<FSInputContainer CssStyle="@componentCssClass">
+
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <FSLabel LabelText="@Label" BecHtmlFor="@Id" />
+    }
+
+    @if (typeof(TType) == typeof(String) || typeof(TType) == typeof(string))
+    {
+        <input id="@Id" type="text" @bind="@CurrentValue" placeholder="@Label" title="@Label" />
+    }
+    else if (typeof(TType) == typeof(int) || typeof(TType) == typeof(float) || typeof(TType) == typeof(double))
+    {
+        <input id="@Id" type="number" @bind="@CurrentValue" placeholder="@Label" title="@Label" />
+    }
+    else
+    {
+        <input id="@Id" @bind="@CurrentValue" placeholder="@Label" title="@Label" />
+    }
+
+    @if (ValidationFor != null)
+    {
+        <ValidationMessage For="@ValidationFor" />
+    }
+</FSInputContainer>
+
+@code {
+    const string BASECLASS = "fs-input";
+
+    [Parameter]
+    public Expression<Func<TType>>? ValidationFor { get; set; }
+
+    [Parameter]
+    public string? Id { get; set; } = Guid.NewGuid().ToString();
+
+    [Parameter]
+    public string? Label { get; set; }
+
+    [Parameter]
+    public string CssStyle { get; set; } = "";
+
+    private string componentCssClass { get { return $"{BASECLASS} {CssStyle}"; } }
+
+    protected override bool TryParseValueFromString(string? value, out TType result, out string validationErrorMessage)
+    {
+        result = GenericConverter.ChangeType<TType>(value ?? "");
+        validationErrorMessage = string.Empty;
+        return true;
+    }
+}

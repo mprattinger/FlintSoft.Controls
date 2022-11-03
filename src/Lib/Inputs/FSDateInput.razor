@@ -1,0 +1,49 @@
+﻿@using System.Linq.Expressions
+<FSInputContainer CssStyle="@componentCssClass">
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <FSLabel LabelText="@Label" BecHtmlFor="@Id" />
+    }
+    <input id="@Id" type="date" @bind="DateValue" title="@Label" />
+    @if (ValidationFor != null)
+    {
+        <ValidationMessage For="@ValidationFor" />
+    }
+</FSInputContainer>
+
+@code {
+    const string BASECLASS = "fs-input-date";
+
+    [Parameter]
+    public string? Id { get; set; } = Guid.NewGuid().ToString();
+
+    [Parameter]
+    public string Label { get; set; } = "";
+
+    private DateOnly _dateValue = DateOnly.FromDateTime(DateTime.Now);
+
+    [Parameter]
+    public DateOnly DateValue
+    {
+        get { return _dateValue; }
+        set
+        {
+            if (value != _dateValue)
+            {
+                _dateValue = value;
+                DateValueChanged.InvokeAsync(value);
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<DateOnly> DateValueChanged { get; set; }
+
+    [Parameter]
+    public string CssClass { get; set; } = "";
+
+    [Parameter]
+    public Expression<Func<DateOnly>>? ValidationFor { get; set; }
+
+    private string componentCssClass { get { return $"{BASECLASS} {CssClass}"; } }
+}

@@ -1,0 +1,26 @@
+﻿[
+  {
+    "outputFile": "Container/FSInputContainer.razor.css",
+    "inputFile": "Container/FSInputContainer.razor.scss"
+  },
+  {
+    "outputFile": "Buttons/FSButton.razor.css",
+    "inputFile": "Buttons/FSButton.razor.scss"
+  },
+  {
+    "outputFile": "Container/FSFormButtonRow.razor.css",
+    "inputFile": "Container/FSFormButtonRow.razor.scss"
+  },
+  {
+    "outputFile": "Container/FSFormRow.razor.css",
+    "inputFile": "Container/FSFormRow.razor.scss"
+  },
+  {
+    "outputFile": "Inputs/FSInput.razor.css",
+    "inputFile": "Inputs/FSInput.razor.scss"
+  },
+  {
+    "outputFile": "Inputs/FSDateInput.razor.css",
+    "inputFile": "Inputs/FSDateInput.razor.scss"
+  }
+]

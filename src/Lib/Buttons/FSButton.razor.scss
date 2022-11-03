@@ -1,0 +1,36 @@
+﻿.fs-button {
+    width: 100px;
+    height: 25px;
+    display: flex;
+    border-style: none;
+    border-radius: 3px;
+    font-size: 14px;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+    outline: none;
+    font-weight: normal;
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+.fs-btn-primary {
+    background-color: blue;
+    color: white;
+
+    &:hover {
+        background-color: lightblue;
+    }
+}
+
+.fs-btn-secondary {
+    background-color: white;
+    color: blue;
+
+    &:hover {
+        background-color: blue;
+        color: white;
+    }
+}
