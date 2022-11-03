@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Lib;
+namespace FlintSoft.Controls;
 
 public static class GenericConverter
 {
