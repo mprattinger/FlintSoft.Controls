@@ -20,7 +20,7 @@
     <PackageProjectUrl>https://github.com/Blazored/Modal</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/Blazored/Modal</RepositoryUrl>
+    <RepositoryUrl>https://github.com/mprattinger/</RepositoryUrl>
 
     <!-- SourceLink settings -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
