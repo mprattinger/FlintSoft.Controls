@@ -4,10 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Version>1.0.1</Version>
 
     <Authors>Michael Prattinger</Authors>
     <Company>FlintSoft</Company>
-    <Copyright>Copyright 2022 (c) Chris Sainty. All rights reserved.</Copyright>
+    <Copyright>Copyright 2022 (c) FlintSoft. All rights reserved.</Copyright>
 
     <Description>Blazor controls</Description>
     <IncludeSymbols>true</IncludeSymbols>

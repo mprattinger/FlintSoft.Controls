@@ -1,33 +1,51 @@
 ﻿.fs-button {
   width: 100px;
-  height: 25px;
   display: flex;
   border-style: none;
-  border-radius: 3px;
+  border-radius: 5px;
   font-size: 14px;
   justify-content: space-around;
   align-items: center;
   box-sizing: border-box;
   outline: none;
   font-weight: normal;
+  padding: 6px 12px;
 }
 .fs-button:active {
   transform: scale(0.98);
 }
 
 .fs-btn-primary {
-  background-color: blue;
+  background-color: #0d6efd;
   color: white;
 }
 .fs-btn-primary:hover {
-  background-color: lightblue;
+  background-color: #0b5ed7;
 }
 
 .fs-btn-secondary {
-  background-color: white;
-  color: blue;
+  background-color: #6c757d;
+  color: white;
 }
 .fs-btn-secondary:hover {
-  background-color: blue;
+  background-color: #5c636a;
+  color: white;
+}
+
+.fs-btn-success {
+  background-color: #198754;
+  color: white;
+}
+.fs-btn-success:hover {
+  background-color: #157347;
+  color: white;
+}
+
+.fs-btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+.fs-btn-danger:hover {
+  background-color: #bb2d3b;
   color: white;
 }

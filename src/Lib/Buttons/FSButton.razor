@@ -6,7 +6,9 @@
     public enum ButtonStyle
     {
         PRIMARY,
-        SECONDARY
+        SECONDARY,
+        SUCCESS,
+        DANGER
     }
 
     const string BASECLASS = "fs-button";
@@ -34,6 +36,8 @@
             {
                 ButtonStyle.PRIMARY => "fs-btn-primary",
                 ButtonStyle.SECONDARY => "fs-btn-secondary",
+                ButtonStyle.SUCCESS => "fs-btn-success",
+                ButtonStyle.DANGER => "fs-btn-danger",
                 _ => ""
             };
 

@@ -4,8 +4,9 @@
     width: 100%;
     justify-content: flex-end;
     padding-right: 0px;
+    margin-bottom: 10px;
 
-    ::deep button {
+    ::deep button:not(:last-child) {
         margin-right: 5px;
     }
 }

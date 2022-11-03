@@ -22,5 +22,9 @@
   {
     "outputFile": "Inputs/FSDateInput.razor.css",
     "inputFile": "Inputs/FSDateInput.razor.scss"
+  },
+  {
+    "outputFile": "Outputs/FSLabel.razor.css",
+    "inputFile": "Outputs/FSLabel.razor.scss"
   }
 ]
