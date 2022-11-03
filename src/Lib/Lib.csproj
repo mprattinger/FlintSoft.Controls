@@ -17,10 +17,10 @@
     <PackageId>FlintSoft.Controls</PackageId>
     <PackageTags>Blazored;Blazor;Razor;Components;Controls;ASP.NET Core;CSharp;Web</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Blazored/Modal</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/mprattinger/FlintSoft.Controls</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/mprattinger/</RepositoryUrl>
+    <RepositoryUrl>https://github.com/mprattinger/FlintSoft.Controls</RepositoryUrl>
 
     <!-- SourceLink settings -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
