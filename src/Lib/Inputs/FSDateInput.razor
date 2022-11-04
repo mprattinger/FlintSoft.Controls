@@ -22,10 +22,10 @@
     [Parameter]
     public string Label { get; set; } = "";
 
-    private DateOnly _dateValue = DateOnly.FromDateTime(DateTime.Now);
+    private DateTime _dateValue = DateTime.Now;
 
     [Parameter]
-    public DateOnly DateValue
+    public DateTime DateValue
     {
         get { return _dateValue; }
         set
@@ -39,7 +39,7 @@
     }
 
     [Parameter]
-    public EventCallback<DateOnly> DateValueChanged { get; set; }
+    public EventCallback<DateTime> DateValueChanged { get; set; }
 
     [Parameter]
     public string CssClass { get; set; } = "";
