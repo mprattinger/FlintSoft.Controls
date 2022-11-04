@@ -1,0 +1,112 @@
+/* _content/FlintSoft.Controls/Buttons/FSButton.razor.rz.scp.css */
+.fs-button[b-fpnkrgliqd] {
+  width: 100px;
+  display: flex;
+  border-style: none;
+  border-radius: 5px;
+  font-size: 14px;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  outline: none;
+  font-weight: normal;
+  padding: 6px 12px;
+}
+.fs-button:active[b-fpnkrgliqd] {
+  transform: scale(0.98);
+}
+
+.fs-btn-primary[b-fpnkrgliqd] {
+  background-color: #0d6efd;
+  color: white;
+}
+.fs-btn-primary:hover[b-fpnkrgliqd] {
+  background-color: #0b5ed7;
+}
+
+.fs-btn-secondary[b-fpnkrgliqd] {
+  background-color: #6c757d;
+  color: white;
+}
+.fs-btn-secondary:hover[b-fpnkrgliqd] {
+  background-color: #5c636a;
+  color: white;
+}
+
+.fs-btn-success[b-fpnkrgliqd] {
+  background-color: #198754;
+  color: white;
+}
+.fs-btn-success:hover[b-fpnkrgliqd] {
+  background-color: #157347;
+  color: white;
+}
+
+.fs-btn-danger[b-fpnkrgliqd] {
+  background-color: #dc3545;
+  color: white;
+}
+.fs-btn-danger:hover[b-fpnkrgliqd] {
+  background-color: #bb2d3b;
+  color: white;
+}
+/* _content/FlintSoft.Controls/Container/FSFormButtonRow.razor.rz.scp.css */
+.fs-form-btn-row-container[b-3dt9qxx6aa] {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  padding-right: 0px;
+  margin-bottom: 10px;
+}
+.fs-form-btn-row-container[b-3dt9qxx6aa]  button:not(:last-child) {
+  margin-right: 5px;
+}
+/* _content/FlintSoft.Controls/Container/FSFormRow.razor.rz.scp.css */
+.fs-form-row-container[b-k48uzawito] {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 10px;
+}
+/* _content/FlintSoft.Controls/Container/FSInputContainer.razor.rz.scp.css */
+.fs-input-container[b-cl57qd35zp] {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+/* _content/FlintSoft.Controls/Inputs/FSDateInput.razor.rz.scp.css */
+.fs-input-date input[b-4mfon5v611] {
+  width: 100%;
+  outline: none;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding: 6px;
+}
+.fs-input-date input:focus[b-4mfon5v611] {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+/* _content/FlintSoft.Controls/Inputs/FSInput.razor.rz.scp.css */
+.fs-input input[b-ctxww15rso] {
+  width: 100%;
+  outline: none;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding: 6px;
+}
+.fs-input input:focus[b-ctxww15rso] {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+/* _content/FlintSoft.Controls/Outputs/FSLabel.razor.rz.scp.css */
+.fs-label[b-08wnwh4ak5] {
+  margin-bottom: 2px;
+  font-size: 0.8rem;
+  color: #212529;
+}

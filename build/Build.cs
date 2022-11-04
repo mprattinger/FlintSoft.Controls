@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Nuke.Common;
 using Nuke.Common.CI;
+using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.Execution;
 using Nuke.Common.Git;
 using Nuke.Common.IO;
@@ -14,6 +15,14 @@ using static Nuke.Common.EnvironmentInfo;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 
+[GitHubActions("ci",
+    GitHubActionsImage.UbuntuLatest,
+    AutoGenerate = true,
+    FetchDepth = 0,
+    OnPushBranches = new[] { "main" },
+    OnPullRequestBranches = new[] { "main" },
+    InvokedTargets = new[] { nameof(PushNuget) },
+    ImportSecrets = new[] { "NUGET_API_KEY" })]
 class Build : NukeBuild
 {
     public static int Main() => Execute<Build>(x => x.PushNuget);
