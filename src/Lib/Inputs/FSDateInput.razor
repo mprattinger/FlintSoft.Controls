@@ -45,7 +45,7 @@
     public string CssClass { get; set; } = "";
 
     [Parameter]
-    public Expression<Func<DateOnly>>? ValidationFor { get; set; }
+    public Expression<Func<DateTime>>? ValidationFor { get; set; }
 
     private string componentCssClass { get { return $"{BASECLASS} {CssClass}"; } }
 }

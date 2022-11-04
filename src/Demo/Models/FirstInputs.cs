@@ -8,5 +8,5 @@ public class FirstInputs
     public string FirstTextInput { get; set; } = "";
 
     [Required]
-    public DateOnly FirstDate { get; set; } = DateOnly.FromDateTime(DateTime.Now);
+    public DateTime FirstDate { get; set; } = DateTime.Now;
 }
