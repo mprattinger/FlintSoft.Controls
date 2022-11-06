@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using Demo.Models
+@using FlintSoft.Controls.Models
 @using static FlintSoft.Controls.Buttons.FSButton
 
 <PageTitle>Index</PageTitle>
@@ -16,10 +17,24 @@ Welcome to your new app.
     <FSFormRow>
         <FSDateInput Id="first-date" Label="My first Date" @bind-DateValue="_model.FirstDate" ValidationFor="() => _model.FirstDate" />
     </FSFormRow>
+    <FSFormRow>
+        <FSDropdown Id="first-dropdown" 
+            TType="DropdownItem"
+            Items="SelectableItems" 
+            @bind-Item="_model.SelectedItem" 
+            EmptyText="Bitte wählen Sie aus..."
+            ValidationFor="() => _model.SelectedItem">
+            <OptionValueTemplate Context="item">@item.Value</OptionValueTemplate>
+        </FSDropdown>
+    </FSFormRow>
+    <FSFormRow>
+        Value:
+        <p>@(_model.SelectedItem == null ? "" : _model.SelectedItem.Value)</p>
+    </FSFormRow>
     <FSFormButtonRow>
         <FSButton ButtonType="submit" Caption="Speichern" Style="ButtonStyle.PRIMARY" />
         <FSButton ButtonType="button" Caption="Abbrechen" Style="ButtonStyle.SECONDARY" OnClickCallback="abort" />
-        <FSButton ButtonType="button" Caption="Abbrechen" Style="ButtonStyle.SUCCESS" OnClickCallback="abort" />
+        <FSButton ButtonType="button" Caption="Set Item" Style="ButtonStyle.SUCCESS" OnClickCallback="setItem" />
         <FSButton ButtonType="button" Caption="Abbrechen" Style="ButtonStyle.DANGER" OnClickCallback="abort" />
     </FSFormButtonRow>
 </EditForm>
@@ -41,4 +56,14 @@ Welcome to your new app.
         TextArea = "";
     }
 
+    void setItem() {
+        _model.SelectedItem = SelectableItems[2];
+    }
+
+    private List<DropdownItem> SelectableItems = new List<DropdownItem>(){
+        new DropdownItem { Key = "first", Value = "First Entry" },
+        new DropdownItem { Key = "second", Value = "Second Entry" },
+        new DropdownItem { Key = "third", Value = "Third Entry" },
+        new DropdownItem { Key = "fourth", Value = "Fourth Entry" }
+    };
 } 

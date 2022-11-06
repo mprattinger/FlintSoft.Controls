@@ -1,0 +1,90 @@
+﻿@namespace FlintSoft.Controls.Inputs
+@using System.Linq.Expressions
+@using FlintSoft.Controls.Models
+
+@typeparam TType where TType : FSDropdownBase
+
+<FSInputContainer CssStyle="@componentCssClass">
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <FSLabel LabelText="@Label" BecHtmlFor="@Id" />
+    }
+    <select id="@Id" name="@Id" @bind="Key">
+        @if(EmptyText != "") {
+            <option value="">@EmptyText</option>
+        }
+        @foreach (var i in Items)
+        {
+            if (OptionValueTemplate != null)
+            {
+                <option value="@i.Key">
+                    @OptionValueTemplate(i)
+                </option>
+            }
+        }
+    </select>
+    @if (ValidationFor != null)
+    {
+        <ValidationMessage For="@ValidationFor" />
+    }
+</FSInputContainer>
+
+@code {
+    const string BASECLASS = "fs-dropdown";
+
+    [Parameter]
+    public string? Id { get; set; } = Guid.NewGuid().ToString();
+
+    [Parameter]
+    public string Label { get; set; } = "";
+
+    [Parameter]
+    public string CssClass { get; set; } = "";
+
+    [Parameter]
+    public Expression<Func<TType>>? ValidationFor { get; set; }
+
+    [Parameter]
+    public List<TType> Items { get; set; } = new();
+
+    [Parameter]
+    public string EmptyText { get; set; } = "";
+
+    private TType _item = default!;
+
+    [Parameter]
+    public TType Item
+    {
+        get { return _item; }
+        set
+        {
+            if (_item != value)
+            {
+                _item = value;
+                Key = value.Key;
+                ItemChanged.InvokeAsync(value);
+            }
+        }
+    }
+
+    [Parameter]
+    public RenderFragment<TType>? OptionValueTemplate { get; set; }
+
+    [Parameter]
+    public EventCallback<TType> ItemChanged { get; set; }
+
+    private string componentCssClass { get { return $"{BASECLASS} {CssClass}"; } }
+
+    private string _key = "";
+    public string Key
+    {
+        get { return _key; }
+        set
+        {
+            if(_key != value && value != "") {
+                Item = Items.First(x => x.Key == value);
+                _key = value;
+            }
+        }
+    }
+}

@@ -26,5 +26,9 @@
   {
     "outputFile": "Outputs/FSLabel.razor.css",
     "inputFile": "Outputs/FSLabel.razor.scss"
+  },
+  {
+    "outputFile": "Inputs/FSDropdown.razor.css",
+    "inputFile": "Inputs/FSDropdown.razor.scss"
   }
 ]

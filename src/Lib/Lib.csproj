@@ -33,6 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Inputs\FSDropdown.razor~RF7be522e.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <_ContentIncludedByDefault Remove="compilerconfig.json" />
   </ItemGroup>
 
