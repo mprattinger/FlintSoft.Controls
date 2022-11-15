@@ -9,8 +9,9 @@
     {
         <FSLabel LabelText="@Label" BecHtmlFor="@Id" />
     }
-    <select id="@Id" name="@Id" @bind="Key">
-        @if(EmptyText != "") {
+    <select id="@Id" name="@Id" @bind="LocalKey">
+        @if (EmptyText != "")
+        {
             <option value="">@EmptyText</option>
         }
         @foreach (var i in Items)
@@ -50,6 +51,23 @@
     [Parameter]
     public string EmptyText { get; set; } = "";
 
+    private string _key = "";
+
+    [Parameter]
+    public string Key
+    {
+        get { return _key; }
+        set
+        {
+
+            if (_key != value)
+            {
+                _key = value;
+                KeyChanged?.InvokeAsync(value);
+            }
+        }
+    }
+
     private TType _item = default!;
 
     [Parameter]
@@ -62,7 +80,7 @@
             {
                 _item = value;
                 Key = value.Key;
-                ItemChanged.InvokeAsync(value);
+                ItemChanged?.InvokeAsync(value);
             }
         }
     }
@@ -71,19 +89,24 @@
     public RenderFragment<TType>? OptionValueTemplate { get; set; }
 
     [Parameter]
-    public EventCallback<TType> ItemChanged { get; set; }
+    public EventCallback<TType>? ItemChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<string>? KeyChanged { get; set; }
 
     private string componentCssClass { get { return $"{BASECLASS} {CssClass}"; } }
 
-    private string _key = "";
-    public string Key
+    private string _localKey = "";
+    public string LocalKey
     {
-        get { return _key; }
+        get { return _localKey; }
         set
         {
-            if(_key != value && value != "") {
+            if (_localKey != value && value != "")
+            {
                 Item = Items.First(x => x.Key == value);
-                _key = value;
+                Key = _localKey;
+                _localKey = value;
             }
         }
     }
