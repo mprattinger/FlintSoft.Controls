@@ -51,22 +51,22 @@
     [Parameter]
     public string EmptyText { get; set; } = "";
 
-    private string _key = "";
+    //private string _key = "";
 
-    [Parameter]
-    public string Key
-    {
-        get { return _key; }
-        set
-        {
+    //[Parameter]
+    //public string Key
+    //{
+    //    get { return _key; }
+    //    set
+    //    {
 
-            if (_key != value)
-            {
-                _key = value;
-                KeyChanged?.InvokeAsync(value);
-            }
-        }
-    }
+    //        if (_key != value)
+    //        {
+    //            _key = value;
+    //            KeyChanged?.InvokeAsync(value);
+    //        }
+    //    }
+    //}
 
     private TType _item = default!;
 
@@ -79,7 +79,7 @@
             if (_item != value)
             {
                 _item = value;
-                Key = value.Key;
+                //Key = value.Key;
                 ItemChanged?.InvokeAsync(value);
             }
         }
@@ -105,7 +105,7 @@
             if (_localKey != value && value != "")
             {
                 Item = Items.First(x => x.Key == value);
-                Key = _localKey;
+                //Key = _localKey;
                 _localKey = value;
             }
         }
