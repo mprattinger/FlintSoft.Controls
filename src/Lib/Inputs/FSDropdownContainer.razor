@@ -1,0 +1,27 @@
+﻿@namespace FlintSoft.Controls.Inputs
+
+<FSInputContainer CssStyle="@componentCssClass">
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <FSLabel LabelText="@Label" BecHtmlFor="@Id" />
+    }
+    @ChildContent
+</FSInputContainer>
+
+@code {
+    const string BASECLASS = "fs-dropdown-container";
+
+    private string componentCssClass { get { return $"{BASECLASS} {CssClass}"; } }
+
+    [Parameter]
+    public string? Id { get; set; } = Guid.NewGuid().ToString();
+
+    [Parameter]
+    public string Label { get; set; } = "";
+
+    [Parameter]
+    public string CssClass { get; set; } = "";
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = default!;
+}

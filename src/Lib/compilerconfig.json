@@ -30,5 +30,9 @@
   {
     "outputFile": "Inputs/FSDropdown.razor.css",
     "inputFile": "Inputs/FSDropdown.razor.scss"
+  },
+  {
+    "outputFile": "Inputs/FSDropdownContainer.razor.css",
+    "inputFile": "Inputs/FSDropdownContainer.razor.scss"
   }
 ]

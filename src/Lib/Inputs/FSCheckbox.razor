@@ -1,0 +1,53 @@
+﻿@namespace FlintSoft.Controls.Inputs
+@using System.Linq.Expressions;
+
+<FSInputContainer CssStyle="@componentCssClass">
+    <div>
+    <input type="checkbox" @bind=CheckBoxValue />
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+            <FSLabel LabelText="@Label" BecHtmlFor="@Id" />
+    }
+    </div>
+    @if (ValidationFor != null)
+    {
+            <ValidationMessage For="@ValidationFor" />
+    }
+</FSInputContainer>
+
+@code {
+    const string BASECLASS = "fs-checkbox";
+
+    [Parameter]
+    public string? Id { get; set; } = Guid.NewGuid().ToString();
+
+    [Parameter]
+    public string Label { get; set; } = "";
+
+    [Parameter]
+    public Expression<Func<bool>>? ValidationFor { get; set; }
+
+    private bool _checkBoxValue;
+
+    [Parameter]
+    public bool CheckBoxValue
+    {
+        get { return _checkBoxValue; }
+        set
+        {
+            if (value != _checkBoxValue)
+            {
+                _checkBoxValue = value;
+                CheckBoxValueChanged?.InvokeAsync(value);
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<bool>? CheckBoxValueChanged { get; set; }
+
+    [Parameter]
+    public string CssClass { get; set; } = "";
+
+    private string componentCssClass { get { return $"{BASECLASS} {CssClass}"; } }
+}

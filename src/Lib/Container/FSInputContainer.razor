@@ -6,6 +6,7 @@
 
 @code {
     const string BASECLASS = "fs-input-container";
+    const string BASECLASSCB = "fs-input-cb-container";
 
     [Parameter]
     public string CssStyle { get; set; } = "";
@@ -13,5 +14,8 @@
     [Parameter]
     public RenderFragment ChildContent { get; set; } = default!;
 
-    private string componentCssClass { get { return $"{BASECLASS} {CssStyle}"; } }
+    [Parameter]
+    public bool IsCheckBox { get; set; } = false;
+
+    private string componentCssClass { get { return $"{(IsCheckBox ? BASECLASSCB : BASECLASS)} {CssStyle}"; } }
 }

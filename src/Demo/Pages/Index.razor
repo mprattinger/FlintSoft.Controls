@@ -11,6 +11,7 @@ Welcome to your new app.
 
 <EditForm Model="_model" OnValidSubmit="myFirstSubmit" class="first-form">
     <DataAnnotationsValidator />
+
     <FSFormRow>
         <FSInput Id="first-inp" Label="My first Input" @bind-Value="_model.FirstTextInput" ValidationFor="() => _model.FirstTextInput" />
     </FSFormRow>
@@ -28,8 +29,21 @@ Welcome to your new app.
         </FSDropdown>
     </FSFormRow>
     <FSFormRow>
+        <FSDropdownContainer Label="Matchtyp" Id="matchtype">
+            <InputSelect id="matchtype" @bind-Value="_model.MatchType" class="matchtype" >
+                @foreach(MatchTypes m in Enum.GetValues(typeof(MatchTypes)))
+                {
+                    <option value="@m">@(m switch { MatchTypes.MATCH => "Meisterschaftsspiel", MatchTypes.CUP => "Cupspiel", MatchTypes.FRENDLY => "Freundschaftsspiel", _ => "" })</option>
+                }
+            </InputSelect>
+        </FSDropdownContainer>
+    </FSFormRow>
+    <FSFormRow>
+        <FSCheckbox Id="athome" Label="Heimspiel" @bind-CheckBoxValue="_model.IsAtHome" ValidationFor="() => _model.IsAtHome" />
+    </FSFormRow>
+    <FSFormRow>
         Value:
-        <p>@(_model.SelectedItem == null ? "" : _model.SelectedItem.Value)</p>
+        <p>@(System.Text.Json.JsonSerializer.Serialize(_model))</p>
     </FSFormRow>
     <FSFormButtonRow>
         <FSButton ButtonType="submit" Caption="Speichern" Style="ButtonStyle.PRIMARY" />
