@@ -42,6 +42,9 @@ Welcome to your new app.
         <FSCheckbox Id="athome" Label="Heimspiel" @bind-CheckBoxValue="_model.IsAtHome" ValidationFor="() => _model.IsAtHome" />
     </FSFormRow>
     <FSFormRow>
+        <FSDateTimeInput Id="when" Label="Spieltermin" @bind-DateTimeValue="_model.When" ValidationFor="() => _model.When" />
+    </FSFormRow>
+    <FSFormRow>
         Value:
         <p>@(System.Text.Json.JsonSerializer.Serialize(_model))</p>
     </FSFormRow>

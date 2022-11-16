@@ -1,0 +1,51 @@
+﻿@namespace FlintSoft.Controls.Inputs
+@using System.Linq.Expressions
+
+<FSInputContainer CssStyle="@componentCssClass">
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <FSLabel LabelText="@Label" BecHtmlFor="@Id" />
+    }
+    <input id="@Id" type="datetime-local" @bind="DateTimeValue" title="@Label" />
+    @if (ValidationFor != null)
+    {
+        <ValidationMessage For="@ValidationFor" />
+    }
+</FSInputContainer>
+
+@code {
+    const string BASECLASS = "fs-input-datetime";
+
+    [Parameter]
+    public string? Id { get; set; } = Guid.NewGuid().ToString();
+
+    [Parameter]
+    public string Label { get; set; } = "";
+
+    private DateTime _dateTimeValue = DateTime.Now;
+
+    [Parameter]
+    public DateTime DateTimeValue
+    {
+        get { return _dateTimeValue; }
+        set
+        {
+            if (value != _dateTimeValue)
+            {
+                _dateTimeValue = value;
+                DateTimeValueChanged.InvokeAsync(value);
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<DateTime> DateTimeValueChanged { get; set; }
+
+    [Parameter]
+    public Expression<Func<DateTime>>? ValidationFor { get; set; }
+
+    [Parameter]
+    public string CssClass { get; set; } = "";
+
+    private string componentCssClass { get { return $"{BASECLASS} {CssClass}"; } }
+}

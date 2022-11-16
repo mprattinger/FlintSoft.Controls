@@ -15,6 +15,9 @@ public class FirstInputs
     public DropdownItem SelectedItem { get; set; } = default!;
 
     [Required]
+    public DateTime When { get; set; } = DateTime.Now;
+
+    [Required]
     public MatchTypes MatchType { get; set; }
 
     [Required]
