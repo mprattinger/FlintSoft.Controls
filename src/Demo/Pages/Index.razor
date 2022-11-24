@@ -66,7 +66,7 @@ Welcome to your new app.
     void myFirstSubmit()
     {
         TextArea = "";
-        TextArea = $"Text: {_model.FirstTextInput}, Date: {_model.FirstDate.ToShortDateString()}";
+        TextArea = $"Text: {_model.FirstTextInput}, Date: {_model.FirstDate.Date.ToShortDateString()}";
     }
 
     void abort() {
