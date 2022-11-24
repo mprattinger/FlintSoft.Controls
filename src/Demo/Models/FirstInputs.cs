@@ -24,7 +24,7 @@ public class FirstInputs
     public bool IsAtHome { get; set; }
 }
 
-public class DropdownItem : FSDropdownBase
+public class DropdownItem : FSDropdownBase<string>
 {
     public override string Key { get; set; } = "";
 

@@ -5,7 +5,7 @@ public interface IFSDropdownBase
     string Key { get; set; }
 }
 
-public abstract class FSDropdownBase
+public abstract class FSDropdownBase<T>
 {
-    public abstract string Key { get; set; }
+    public abstract T Key { get; set; }
 }

@@ -2,7 +2,7 @@
 @using System.Linq.Expressions
 @using FlintSoft.Controls.Models
 
-@typeparam TType where TType : FSDropdownBase
+@typeparam TType where TType : FSDropdownBase<string>
 
 <FSInputContainer CssStyle="@componentCssClass">
     @if (!string.IsNullOrWhiteSpace(Label))
