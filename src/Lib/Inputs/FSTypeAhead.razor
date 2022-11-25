@@ -1,0 +1,155 @@
+﻿@using System.Linq.Expressions;
+@using Lib;
+
+@namespace FlintSoft.Controls.Inputs
+
+@inject IJSRuntime JSRuntime
+
+<FSInputContainer CssStyle="@componentCssClass">
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <FSLabel LabelText="@Label" BecHtmlFor="@Id" />
+    }
+    <input @ref="_searchInput" type="text" id="@Id" @oninput="inputChanged" value="@Value" @onkeydown="keyDown" />
+    @if (_showResult && suggestionsFiltered.Count > 0)
+    {
+        <div id="@(Id + "autocomplete-list")" class="autocomplete-items">
+            @foreach (var s in suggestionsFiltered.Select((v, i) => new { i, v }))
+            {
+                <div @onclick="() => suggestionSelected(s.v)"
+             class="@(s.i == _currentIndex ? "active": "")">
+                    @s.v
+                </div>
+            }
+        </div>
+    }
+    @if (ValidationFor != null)
+    {
+        <ValidationMessage For="@ValidationFor" />
+    }
+</FSInputContainer>
+
+@code {
+    const string BASECLASS = "fs-type-ahead";
+
+    bool _showResult = false;
+
+    List<string> suggestionsFiltered = new();
+
+    int _currentIndex = -1;
+
+    private ElementReference _searchInput;
+
+    [Parameter]
+    public string? Id { get; set; } = Guid.NewGuid().ToString();
+
+    [Parameter]
+    public string? Label { get; set; }
+
+    [Parameter]
+    public string CssStyle { get; set; } = "";
+
+    [Parameter]
+    public List<string> Suggestions { get; set; } = new();
+
+    [Parameter]
+    public string Value { get; set; } = "";
+
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set; }
+
+    [Parameter]
+    public bool OnlyAllowSuggestions { get; set; } = false;
+
+    [Parameter]
+    public Expression<Func<string>>? ValidationFor { get; set; }
+
+    private string componentCssClass { get { return $"{BASECLASS} {CssStyle}"; } }
+
+    async Task inputChanged(ChangeEventArgs e)
+    {
+        var v = e.Value?.ToString() ?? "";
+        _showResult = false;
+
+        suggestionsFiltered.Clear();
+        _currentIndex = -1;
+
+        if (v == "")
+            return;
+
+        suggestionsFiltered = Suggestions.Where(x => x.ToUpper().StartsWith(v.ToUpper())).ToList();
+        _showResult = suggestionsFiltered.Count > 0 && v != "";
+
+        if (suggestionsFiltered.Count == 1)
+        {
+            suggestionSelected(suggestionsFiltered[0]);
+            return;
+        }
+
+        await JSRuntime.RegisterOutsideClick(_searchInput, this, "OutsideClick", true);
+
+        Value = v;
+
+        if (!OnlyAllowSuggestions)
+        {
+            await ValueChanged.InvokeAsync(Value);
+        }
+    }
+
+    void keyDown(KeyboardEventArgs e)
+    {
+        if (e.Code == "ArrowDown")
+        {
+            _currentIndex = _currentIndex++ == Suggestions.Count ? _currentIndex : _currentIndex++;
+        }
+        else if (e.Code == "ArrowUp")
+        {
+            _currentIndex = _currentIndex-- < 0 ? 0 : _currentIndex--;
+        }
+        else if (e.Code == "Enter")
+        {
+            if (_currentIndex == -1 || suggestionsFiltered.Count == 0)
+            {
+                cleanUp();
+
+                return;
+            };
+
+            suggestionSelected(suggestionsFiltered[_currentIndex]);
+        }
+        else if (e.Code == "Escape")
+        {
+            cleanUp();
+        }
+        else if (e.Code == "Tab")
+        {
+            cleanUp();
+        }
+    }
+
+    void suggestionSelected(string suggestion)
+    {
+        Value = suggestion;
+
+        cleanUp();
+
+        //Remove jsHandler
+        JSRuntime.CleanupInterop(_searchInput);
+        ValueChanged.InvokeAsync(Value);
+    }
+
+    [JSInvokable("OutsideClick")]
+    public void OutsideClick()
+    {
+        cleanUp();
+        StateHasChanged();
+    }
+
+    void cleanUp()
+    {
+        _showResult = false;
+
+        suggestionsFiltered.Clear();
+        _currentIndex = -1;
+    }
+}

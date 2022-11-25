@@ -1,0 +1,47 @@
+﻿.fs-type-ahead {
+    display: flex;
+    flex-direction: column;
+}
+
+    .fs-type-ahead input {
+        width: 100%;
+        outline: none;
+        border: none;
+        border: 1px solid gray;
+        border-radius: 5px;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        padding: 6px;
+    }
+
+        .fs-type-ahead input:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+        }
+
+        .fs-type-ahead .autocomplete-items {
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            margin-top: 3px;
+            width: 100%;
+        }
+
+        .fs-type-ahead .autocomplete-items div {
+            padding: 3px;
+            padding-left: 10px;
+            cursor: pointer;
+        }
+
+            .fs-type-ahead .autocomplete-items div:not(:last-child) {
+                border-bottom: 1px solid black;
+            }
+
+            .fs-type-ahead .autocomplete-items div:hover {
+                background-color: lightblue;
+            }
+
+            .fs-type-ahead .autocomplete-items div.active {
+                background-color: lightblue;
+            }

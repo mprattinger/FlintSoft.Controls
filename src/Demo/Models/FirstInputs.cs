@@ -22,6 +22,9 @@ public class FirstInputs
 
     [Required]
     public bool IsAtHome { get; set; }
+
+    [Required]
+    public string Country { get; set; } = "";
 }
 
 public class DropdownItem : FSDropdownBase<string>
