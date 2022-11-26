@@ -22,10 +22,10 @@
     [Parameter]
     public string Label { get; set; } = "";
 
-    private DateTimeOffset _dateValue = DateTime.Now;
+    private DateTime _dateValue = DateTime.Now;
 
     [Parameter]
-    public DateTimeOffset DateValue
+    public DateTime DateValue
     {
         get { return _dateValue; }
         set
@@ -39,13 +39,13 @@
     }
 
     [Parameter]
-    public EventCallback<DateTimeOffset> DateValueChanged { get; set; }
+    public EventCallback<DateTime> DateValueChanged { get; set; }
 
     [Parameter]
     public string CssClass { get; set; } = "";
 
     [Parameter]
-    public Expression<Func<DateTimeOffset>>? ValidationFor { get; set; }
+    public Expression<Func<DateTime>>? ValidationFor { get; set; }
 
     private string componentCssClass { get { return $"{BASECLASS} {CssClass}"; } }
 }

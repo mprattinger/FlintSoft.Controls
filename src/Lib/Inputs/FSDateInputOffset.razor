@@ -6,7 +6,7 @@
     {
         <FSLabel LabelText="@Label" BecHtmlFor="@Id" />
     }
-    <input id="@Id" type="datetime-local" @bind="DateTimeValue" title="@Label" />
+    <input id="@Id" type="date" @bind="DateValue" title="@Label" />
     @if (ValidationFor != null)
     {
         <ValidationMessage For="@ValidationFor" />
@@ -14,7 +14,7 @@
 </FSInputContainer>
 
 @code {
-    const string BASECLASS = "fs-input-datetime";
+    const string BASECLASS = "fs-input-date-offset";
 
     [Parameter]
     public string? Id { get; set; } = Guid.NewGuid().ToString();
@@ -22,30 +22,30 @@
     [Parameter]
     public string Label { get; set; } = "";
 
-    private DateTime _dateTimeValue = DateTime.Now;
+    private DateTimeOffset _dateValue = DateTime.Now;
 
     [Parameter]
-    public DateTime DateTimeValue
+    public DateTimeOffset DateValue
     {
-        get { return _dateTimeValue; }
+        get { return _dateValue; }
         set
         {
-            if (value != _dateTimeValue)
+            if (value != _dateValue)
             {
-                _dateTimeValue = value;
-                DateTimeValueChanged.InvokeAsync(value);
+                _dateValue = value;
+                DateValueChanged.InvokeAsync(value);
             }
         }
     }
 
     [Parameter]
-    public EventCallback<DateTime> DateTimeValueChanged { get; set; }
-
-    [Parameter]
-    public Expression<Func<DateTime>>? ValidationFor { get; set; }
+    public EventCallback<DateTimeOffset> DateValueChanged { get; set; }
 
     [Parameter]
     public string CssClass { get; set; } = "";
+
+    [Parameter]
+    public Expression<Func<DateTimeOffset>>? ValidationFor { get; set; }
 
     private string componentCssClass { get { return $"{BASECLASS} {CssClass}"; } }
 }
