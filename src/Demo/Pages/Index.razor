@@ -51,6 +51,9 @@ Welcome to your new app.
         <FSTypeAhead Id="countries2" Label="Land2" Suggestions="countries" @bind-Value="_model.Country2" ValidationFor="() => _model.Country2" />
     </FSFormRow>
     <FSFormRow>
+        <FSTypeAheadDynamic Id="cities" Label="Orte" ProvideSuggestionsRequest="getSuggestions" @bind-Value="_model.City" ValidationFor="() => _model.City" />
+    </FSFormRow>
+    <FSFormRow>
         Value:
         <p>@(System.Text.Json.JsonSerializer.Serialize(_model))</p>
     </FSFormRow>
@@ -65,6 +68,8 @@ Welcome to your new app.
 <textarea>@TextArea</textarea>
 
 @code {
+    private List<string> cities = new(); 
+
     public string TextArea { get; set; } = "";
 
     public FirstInputs _model = new();
@@ -99,4 +104,28 @@ Welcome to your new app.
         new DropdownItem { Key = "third", Value = "Third Entry" },
         new DropdownItem { Key = "fourth", Value = "Fourth Entry" }
     };
+
+    async Task<IEnumerable<string>> getSuggestions(string searchText)
+    {
+        if (searchText.Length <= 2) return Enumerable.Empty<string>();
+
+        var ret = new List<string>();
+
+        if (cities.Count() == 0)
+        {
+            var data = await File.ReadAllLinesAsync("cities.csv");
+
+            cities.Clear();
+            foreach (var l in data)
+            {
+                var cols = l.Split(',');
+                var city = cols[3].Trim();
+                cities.Add(city);
+            }
+        }
+
+        ret = cities.Where(x => x.ToLower().StartsWith(searchText.ToLower())).ToList();
+
+        return ret;
+    }
 } 

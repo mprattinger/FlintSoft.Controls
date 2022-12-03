@@ -76,6 +76,35 @@
   align-items: flex-start;
   width: 100%;
 }
+
+.fs-input-cb-container[b-cl57qd35zp] {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+.fs-input-cb-container div[b-cl57qd35zp] {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+}
+/* _content/FlintSoft.Controls/Inputs/FSCheckbox.razor.rz.scp.css */
+.fs-checkbox div[b-5pec8kt52k] {
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+}
+.fs-checkbox div input[b-5pec8kt52k] {
+    outline: none;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 6px;
+    height: 33px;
+    width: 33px;
+}
 /* _content/FlintSoft.Controls/Inputs/FSDateInput.razor.rz.scp.css */
 .fs-input-date input[b-4mfon5v611] {
   width: 100%;
@@ -90,6 +119,79 @@
   border-color: #86b7fe;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
+/* _content/FlintSoft.Controls/Inputs/FSDateInputOffset.razor.rz.scp.css */
+.fs-input-date-offset input[b-h6q1pt8m3k] {
+    width: 100%;
+    outline: none;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 6px;
+}
+
+.fs-input-date-offset input:focus[b-h6q1pt8m3k] {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+/* _content/FlintSoft.Controls/Inputs/FSDateTimeInput.razor.rz.scp.css */
+.fs-input-datetime input[b-tg3w7eoxl8] {
+    width: 100%;
+    outline: none;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 6px;
+}
+
+    .fs-input-datetime input:focus[b-tg3w7eoxl8] {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+/* _content/FlintSoft.Controls/Inputs/FSDateTimeOffset.razor.rz.scp.css */
+.fs-input-datetime_offset input[b-quobyopu41] {
+    width: 100%;
+    outline: none;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 6px;
+}
+
+.fs-input-datetime_offse input:focus[b-quobyopu41] {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+/* _content/FlintSoft.Controls/Inputs/FSDropdown.razor.rz.scp.css */
+.fs-dropdown select[b-36c1c82j8y] {
+  width: 100%;
+  outline: none;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding: 6px;
+}
+.fs-dropdown select:focus[b-36c1c82j8y] {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+/* _content/FlintSoft.Controls/Inputs/FSDropdownContainer.razor.rz.scp.css */
+/*.fs-dropdown-container ::deep select {
+    width: 100%;
+    outline: none;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 6px;
+}
+.fs-dropdown-container select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}*/
 /* _content/FlintSoft.Controls/Inputs/FSInput.razor.rz.scp.css */
 .fs-input input[b-ctxww15rso] {
   width: 100%;
@@ -104,6 +206,54 @@
   border-color: #86b7fe;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
+/* _content/FlintSoft.Controls/Inputs/FSTypeAhead.razor.rz.scp.css */
+.fs-type-ahead[b-nfbupnos74] {
+    display: flex;
+    flex-direction: column;
+}
+
+    .fs-type-ahead input[b-nfbupnos74] {
+        width: 100%;
+        outline: none;
+        border: none;
+        border: 1px solid gray;
+        border-radius: 5px;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        padding: 6px;
+    }
+
+        .fs-type-ahead input:focus[b-nfbupnos74] {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+        }
+
+        .fs-type-ahead .autocomplete-items[b-nfbupnos74] {
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            margin-top: 3px;
+            width: 100%;
+        }
+
+        .fs-type-ahead .autocomplete-items div[b-nfbupnos74] {
+            padding: 3px;
+            padding-left: 10px;
+            cursor: pointer;
+        }
+
+            .fs-type-ahead .autocomplete-items div:not(:last-child)[b-nfbupnos74] {
+                border-bottom: 1px solid black;
+            }
+
+            .fs-type-ahead .autocomplete-items div:hover[b-nfbupnos74] {
+                background-color: lightblue;
+            }
+
+            .fs-type-ahead .autocomplete-items div.active[b-nfbupnos74] {
+                background-color: lightblue;
+            }
 /* _content/FlintSoft.Controls/Outputs/FSLabel.razor.rz.scp.css */
 .fs-label[b-08wnwh4ak5] {
   margin-bottom: 2px;

@@ -1,0 +1,158 @@
+﻿@using Lib;
+@using System.Linq.Expressions;
+
+@namespace FlintSoft.Controls.Inputs
+
+@inject IJSRuntime JSRuntime
+
+<FSInputContainer CssStyle="@componentCssClass">
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <FSLabel LabelText="@Label" BecHtmlFor="@Id" />
+    }
+    <input @ref="_searchInput" type="text" id="@Id" @oninput="inputChanged" value="@Value" @onkeydown="keyDown" />
+    @if (_showResult && suggestionsFiltered.Count > 0)
+    {
+        <div id="@(Id + "autocomplete-list")" class="autocomplete-items">
+            @foreach (var s in suggestionsFiltered.Select((v, i) => new { i, v }))
+            {
+                <div @onclick="() => suggestionSelected(s.v)"
+             class="@(s.i == _currentIndex ? "active": "")">
+                    @s.v
+                </div>
+            }
+        </div>
+    }
+    @if (ValidationFor != null)
+    {
+        <ValidationMessage For="@ValidationFor" />
+    }
+</FSInputContainer>
+
+@code {
+    const string BASECLASS = "fs-type-ahead-dyn";
+
+    private ElementReference _searchInput;
+    bool _showResult = false;
+
+    List<string> suggestions = new();
+    List<string> suggestionsFiltered = new();
+
+    int _currentIndex = -1;
+
+    [Parameter]
+    public string? Id { get; set; } = Guid.NewGuid().ToString();
+
+    [Parameter]
+    public string? Label { get; set; }
+
+    [Parameter]
+    public string CssStyle { get; set; } = "";
+
+    [Parameter]
+    public string Value { get; set; } = "";
+
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set; }
+
+    [Parameter]
+    public Expression<Func<string>>? ValidationFor { get; set; }
+
+    [Parameter]
+    public Func<string, Task<IEnumerable<string>>>? ProvideSuggestionsRequest { get; set; }
+
+    private string componentCssClass { get { return $"{BASECLASS} {CssStyle}"; } }
+
+    async Task inputChanged(ChangeEventArgs e)
+    {
+        var v = e.Value?.ToString() ?? "";
+        _showResult = false;
+
+        _currentIndex = -1;
+        suggestionsFiltered.Clear();
+
+        if (v.Length < 3)
+        {
+            suggestions.Clear();
+            return;
+        }
+
+        if (v.Length == 3)
+        {
+            //Suggestions laden
+            if (ProvideSuggestionsRequest != null)
+            {
+                var data = await ProvideSuggestionsRequest(v);
+                suggestions = data.ToList();
+            }
+        }
+
+        suggestionsFiltered = suggestions.Where(x => x.ToUpper().StartsWith(v.ToUpper())).ToList();
+        _showResult = suggestionsFiltered.Count > 0 && v != "";
+
+        if (suggestionsFiltered.Count == 1)
+        {
+            suggestionSelected(suggestionsFiltered[0]);
+            return;
+        }
+
+        await JSRuntime.RegisterOutsideClick(_searchInput, this, "OutsideClick", true);
+    }
+
+    void keyDown(KeyboardEventArgs e)
+    {
+        if (e.Code == "ArrowDown")
+        {
+            _currentIndex = _currentIndex++ == suggestions.Count ? _currentIndex : _currentIndex++;
+        }
+        else if (e.Code == "ArrowUp")
+        {
+            _currentIndex = _currentIndex-- < 0 ? 0 : _currentIndex--;
+        }
+        else if (e.Code == "Enter")
+        {
+            if (_currentIndex == -1 || suggestionsFiltered.Count == 0)
+            {
+                cleanUp();
+
+                return;
+            };
+
+            suggestionSelected(suggestionsFiltered[_currentIndex]);
+        }
+        else if (e.Code == "Escape")
+        {
+            cleanUp();
+        }
+        else if (e.Code == "Tab")
+        {
+            cleanUp();
+        }
+    }
+
+    void suggestionSelected(string suggestion)
+    {
+        Value = suggestion;
+
+        cleanUp();
+
+        //Remove jsHandler
+        JSRuntime.CleanupInterop(_searchInput);
+        ValueChanged.InvokeAsync(Value);
+    }
+
+    [JSInvokable("OutsideClick")]
+    public void OutsideClick()
+    {
+        cleanUp();
+        StateHasChanged();
+    }
+
+    void cleanUp()
+    {
+        _showResult = false;
+
+        suggestionsFiltered.Clear();
+        _currentIndex = -1;
+    }
+}

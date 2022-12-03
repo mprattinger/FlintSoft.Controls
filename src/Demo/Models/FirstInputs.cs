@@ -28,6 +28,9 @@ public class FirstInputs
 
     [Required]
     public string Country2 { get; set; } = "";
+
+    [Required]
+    public string City { get; set; } = "";
 }
 
 public class DropdownItem : FSDropdownBase<string>
