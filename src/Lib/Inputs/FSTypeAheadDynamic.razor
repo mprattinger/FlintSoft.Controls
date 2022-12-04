@@ -56,6 +56,9 @@
     public EventCallback<string> ValueChanged { get; set; }
 
     [Parameter]
+    public bool OnlyAllowSuggestions { get; set; } = false;
+
+    [Parameter]
     public Expression<Func<string>>? ValidationFor { get; set; }
 
     [Parameter]
@@ -97,6 +100,13 @@
         }
 
         await JSRuntime.RegisterOutsideClick(_searchInput, this, "OutsideClick", true);
+
+        Value = v;
+
+        if (!OnlyAllowSuggestions)
+        {
+            await ValueChanged.InvokeAsync(Value);
+        }
     }
 
     void keyDown(KeyboardEventArgs e)
