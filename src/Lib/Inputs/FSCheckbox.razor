@@ -3,15 +3,15 @@
 
 <FSInputContainer CssStyle="@componentCssClass">
     <div>
-    <input type="checkbox" @bind=CheckBoxValue />
-    @if (!string.IsNullOrWhiteSpace(Label))
-    {
+        <input type="checkbox" @bind=CheckBoxValue />
+        @if (!string.IsNullOrWhiteSpace(Label))
+        {
             <FSLabel LabelText="@Label" BecHtmlFor="@Id" />
-    }
+        }
     </div>
     @if (ValidationFor != null)
     {
-            <ValidationMessage For="@ValidationFor" />
+        <ValidationMessage For="@ValidationFor" />
     }
 </FSInputContainer>
 

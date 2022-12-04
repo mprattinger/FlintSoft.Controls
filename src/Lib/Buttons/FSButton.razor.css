@@ -19,7 +19,7 @@
   background-color: #0d6efd;
   color: white;
 }
-.fs-btn-primary:hover {
+.fs-btn-primary:hover, .fs-btn-primary:focus {
   background-color: #0b5ed7;
 }
 
@@ -27,7 +27,7 @@
   background-color: #6c757d;
   color: white;
 }
-.fs-btn-secondary:hover {
+.fs-btn-secondary:hover, .fs-btn-secondary:focus {
   background-color: #5c636a;
   color: white;
 }
@@ -36,7 +36,7 @@
   background-color: #198754;
   color: white;
 }
-.fs-btn-success:hover {
+.fs-btn-success:hover, .fs-btn-success:focus {
   background-color: #157347;
   color: white;
 }
@@ -45,7 +45,7 @@
   background-color: #dc3545;
   color: white;
 }
-.fs-btn-danger:hover {
+.fs-btn-danger:hover, .fs-btn-danger:focus {
   background-color: #bb2d3b;
   color: white;
 }

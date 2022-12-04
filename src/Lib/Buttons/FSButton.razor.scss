@@ -20,7 +20,7 @@
     background-color: #0d6efd;
     color: white;
 
-    &:hover {
+    &:hover, &:focus {
         background-color: #0b5ed7;
     }
 }
@@ -29,7 +29,7 @@
     background-color: #6c757d;
     color: white;
 
-    &:hover {
+    &:hover, &:focus {
         background-color: #5c636a;
         color: white;
     }
@@ -39,7 +39,7 @@
     background-color: #198754;
     color: white;
 
-    &:hover {
+    &:hover, &:focus {
         background-color: #157347;
         color: white;
     }
@@ -49,7 +49,7 @@
     background-color: #dc3545;
     color: white;
 
-    &:hover {
+    &:hover, &:focus {
         background-color: #bb2d3b;
         color: white;
     }
