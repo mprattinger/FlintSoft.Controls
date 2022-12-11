@@ -16,7 +16,7 @@
     }
     else if (typeof(TType) == typeof(int) || typeof(TType) == typeof(float) || typeof(TType) == typeof(double))
     {
-        <input id="@Id" type="number" @bind="@CurrentValue" placeholder="@Label" title="@Label" />
+        <input id="@Id" type="number" @bind="@CurrentValue" placeholder="@Label" title="@Label" step="any" />
     }
     else
     {
