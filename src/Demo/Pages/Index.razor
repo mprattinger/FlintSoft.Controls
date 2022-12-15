@@ -16,7 +16,7 @@ Welcome to your new app.
         <FSInput Id="first-inp" Label="My first Input" @bind-Value="_model.FirstTextInput" ValidationFor="() => _model.FirstTextInput" />
     </FSFormRow>
     <FSFormRow>
-        <FSDateInput Id="first-date" Label="My first Date" @bind-DateValue="_model.FirstDate" ValidationFor="() => _model.FirstDate" />
+        <FSDateInputOffset Id="first-date" Label="My first Date" @bind-DateValue="_model.FirstDate" ValidationFor="() => _model.FirstDate" />
     </FSFormRow>
     <FSFormRow>
         <FSDropdown Id="first-dropdown" 
@@ -42,7 +42,7 @@ Welcome to your new app.
         <FSCheckbox Id="athome" Label="Heimspiel" @bind-CheckBoxValue="_model.IsAtHome" ValidationFor="() => _model.IsAtHome" />
     </FSFormRow>
     <FSFormRow>
-        <FSDateTimeInput Id="when" Label="Spieltermin" @bind-DateTimeValue="_model.When" ValidationFor="() => _model.When" />
+        <FSDateTimeOffset Id="when" Label="Spieltermin" @bind-DateTimeValue="_model.When" ValidationFor="() => _model.When" />
     </FSFormRow>
     <FSFormRow>
         <FSTypeAhead Id="countries" Label="Land" Suggestions="countries" @bind-Value="_model.Country" ValidationFor="() => _model.Country" />

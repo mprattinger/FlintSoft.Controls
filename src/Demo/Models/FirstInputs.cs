@@ -9,13 +9,13 @@ public class FirstInputs
     public string FirstTextInput { get; set; } = "";
 
     [Required]
-    public DateTime FirstDate { get; set; } = DateTime.Now;
+    public DateTimeOffset FirstDate { get; set; } = DateTime.Now;
 
     [Required]
     public DropdownItem SelectedItem { get; set; } = default!;
 
     [Required]
-    public DateTime When { get; set; } = DateTime.Now;
+    public DateTimeOffset When { get; set; } = DateTime.Now;
 
     [Required]
     public MatchTypes MatchType { get; set; }
