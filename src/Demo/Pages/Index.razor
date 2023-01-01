@@ -54,6 +54,11 @@ Welcome to your new app.
         <FSTypeAheadDynamic Id="cities" Label="Orte" ProvideSuggestionsRequest="getSuggestions" @bind-Value="_model.City" ValidationFor="() => _model.City" />
     </FSFormRow>
     <FSFormRow>
+        <FSInput TType="string" Label="Vorname" @bind-Value="_model.Firstname" ValidationFor="() => _model.Firstname" />
+        <FSInput TType="string" Label="Vorname" @bind-Value="_model.Firstname" ValidationFor="() => _model.Firstname" />
+        <FSInput TType="string" Label="Nachname" @bind-Value="_model.Lastname" ValidationFor="() => _model.Lastname" />
+    </FSFormRow>
+    <FSFormRow>
         Value:
         <p>@(System.Text.Json.JsonSerializer.Serialize(_model))</p>
     </FSFormRow>

@@ -1,1 +1,1 @@
-﻿.fs-form-row-container{display:flex;flex-direction:row;width:100%;margin-bottom:10px;}
+﻿.fs-form-row-container{display:flex;flex-direction:row;width:100%;margin-bottom:10px;}.fs-form-row-container ::deep div:not(:first-child){margin-left:15px;}
