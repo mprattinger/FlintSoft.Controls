@@ -90,7 +90,7 @@
             }
         }
 
-        suggestionsFiltered = suggestions.Where(x => x.ToUpper().StartsWith(v.ToUpper())).ToList();
+        suggestionsFiltered = suggestions.Where(x => x.ToUpper().Contains(v.ToUpper())).ToList();
         _showResult = suggestionsFiltered.Count > 0 && v != "";
 
         if (suggestionsFiltered.Count == 1)
