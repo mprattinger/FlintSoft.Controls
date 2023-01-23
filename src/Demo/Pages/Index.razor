@@ -13,7 +13,7 @@ Welcome to your new app.
     <DataAnnotationsValidator />
 
     <FSFormRow>
-        <FSInput Id="first-inp" Label="My first Input" @bind-Value="_model.FirstTextInput" ValidationFor="() => _model.FirstTextInput" />
+        <FSInput Id="first-inp" Label="My first Input" @bind-Value="_model.FirstTextInput" ValidationFor="() => _model.FirstTextInput" Disabled="true" />
     </FSFormRow>
     <FSFormRow>
         <FSDateInputOffset Id="first-date" Label="My first Date" @bind-DateValue="_model.FirstDate" ValidationFor="() => _model.FirstDate" />
@@ -67,6 +67,7 @@ Welcome to your new app.
         <FSButton ButtonType="button" Caption="Abbrechen" Style="ButtonStyle.SECONDARY" OnClickCallback="abort" />
         <FSButton ButtonType="button" Caption="Set Item" Style="ButtonStyle.SUCCESS" OnClickCallback="setItem" />
         <FSButton ButtonType="button" Caption="Abbrechen" Style="ButtonStyle.DANGER" OnClickCallback="abort" />
+        <FSButton ButtonType="button" Caption="Abbrechen" Style="ButtonStyle.DANGER" OnClickCallback="abort" Disabled="true" />
     </FSFormButtonRow>
 </EditForm>
 

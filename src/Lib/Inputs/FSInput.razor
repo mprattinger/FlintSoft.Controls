@@ -12,15 +12,15 @@
 
     @if (typeof(TType) == typeof(String) || typeof(TType) == typeof(string))
     {
-        <input id="@Id" type="text" @bind="@CurrentValue" placeholder="@Label" title="@Label" />
+        <input id="@Id" type="text" @bind="@CurrentValue" placeholder="@Label" title="@Label" disabled="@Disabled" />
     }
     else if (typeof(TType) == typeof(int) || typeof(TType) == typeof(float) || typeof(TType) == typeof(double))
     {
-        <input id="@Id" type="number" @bind="@CurrentValue" placeholder="@Label" title="@Label" step="any" />
+        <input id="@Id" type="number" @bind="@CurrentValue" placeholder="@Label" title="@Label" step="any" disabled="@Disabled" />
     }
     else
     {
-        <input id="@Id" @bind="@CurrentValue" placeholder="@Label" title="@Label" />
+        <input id="@Id" @bind="@CurrentValue" placeholder="@Label" title="@Label" disabled="@Disabled" />
     }
 
     @if (ValidationFor != null)
@@ -43,6 +43,9 @@
 
     [Parameter]
     public string CssStyle { get; set; } = "";
+
+    [Parameter]
+    public bool Disabled { get; set; }
 
     private string componentCssClass { get { return $"{BASECLASS} {CssStyle}"; } }
 
