@@ -14,6 +14,10 @@
 .fs-button:active {
   transform: scale(0.98);
 }
+.fs-button:disabled {
+  transform: none;
+  filter: brightness(50%);
+}
 
 .fs-btn-primary {
   background-color: #0d6efd;

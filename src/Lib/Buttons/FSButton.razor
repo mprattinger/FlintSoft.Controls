@@ -1,6 +1,6 @@
 ﻿@namespace FlintSoft.Controls.Buttons
 
-<button type="@ButtonType" onclick="@OnClickCallback" @onclick:preventDefault="@PreventDefault" class="@componentCssClass" disabled="Disabled">@Caption</button>
+<button type="@ButtonType" onclick="@OnClickCallback" @onclick:preventDefault="@PreventDefault" class="@componentCssClass" disabled="@Disabled">@Caption</button>
 
 @code {
     public enum ButtonStyle
