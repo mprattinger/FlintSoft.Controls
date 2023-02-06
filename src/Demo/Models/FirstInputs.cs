@@ -37,6 +37,9 @@ public class FirstInputs
 
     [Required]
     public string Lastname { get; set; } = "";
+
+    [Required]
+    public double DblValue { get; set; }
 }
 
 public class DropdownItem : FSDropdownBase<string>

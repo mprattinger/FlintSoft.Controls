@@ -53,6 +53,11 @@ Welcome to your new app.
     <FSFormRow>
         <FSTypeAheadDynamic Id="cities" Label="Orte" ProvideSuggestionsRequest="getSuggestions" @bind-Value="_model.City" ValidationFor="() => _model.City" />
     </FSFormRow>
+
+    <FSFormRow>
+        <FSDoubleInput Id="dbl-test" Label="Nummer" @bind-Value="_model.DblValue" ValidationFor="() => _model.DblValue" />
+    </FSFormRow>
+
     <FSFormRow>
         <FSInput TType="string" Label="Vorname" @bind-Value="_model.Firstname" ValidationFor="() => _model.Firstname" />
         <FSInput TType="string" Label="Vorname" @bind-Value="_model.Firstname" ValidationFor="() => _model.Firstname" />
